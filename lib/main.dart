@@ -35,7 +35,7 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  int leftDiceNumber = 5;
+  int leftDiceNumber = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +49,12 @@ class _DicePageState extends State<DicePage> {
                 print(
                   'The left dice got pressed',
                 );
+
+                setState(
+                  () {
+                    leftDiceNumber = 5;
+                  },
+                ); // setState
               },
               child: Image.asset(
                 'lib/images/dice$leftDiceNumber.png',
