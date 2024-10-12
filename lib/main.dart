@@ -11,7 +11,7 @@ void main() {
           shadowColor: Colors.black,
           elevation: 15,
           backgroundColor: Colors.blue,
-          title: Text(
+          title: const Text(
             'Dice',
             style: TextStyle(
               color: Colors.white,
@@ -21,19 +21,24 @@ void main() {
             ),
           ),
         ),
-        body: DicePage(),
+        body: const DicePage(),
       ),
     ),
   );
 } // End Of Main
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
   const DicePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    var leftDiceNumber = 5;
+  State<DicePage> createState() => _DicePageState();
+}
 
+class _DicePageState extends State<DicePage> {
+  int leftDiceNumber = 5;
+
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Row(
         children: [
@@ -59,7 +64,7 @@ class DicePage extends StatelessWidget {
                 );
               },
               child: Image.asset(
-                'lib/images/one.png',
+                'lib/images/dice1.png',
               ),
             ),
           ),
