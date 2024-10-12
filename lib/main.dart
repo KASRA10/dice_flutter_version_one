@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +12,7 @@ void main() {
           centerTitle: true,
           shadowColor: Colors.black,
           elevation: 15,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.red,
           title: const Text(
             'Dice',
             style: TextStyle(
@@ -36,6 +38,23 @@ class DicePage extends StatefulWidget {
 
 class _DicePageState extends State<DicePage> {
   int leftDiceNumber = 1;
+  int rightDiceNumber = 1;
+
+  void diceChanger() {
+    // ignore: avoid_print
+    print(
+      'The left And right dices got pressed',
+    ); // For Console Debugging
+
+    setState(
+      () {
+        leftDiceNumber = Random().nextInt(6) +
+            1; // Random is in the range of 0 to 5 and with +1 it would be ==> from 1 To 6.
+        rightDiceNumber = Random().nextInt(6) +
+            1; // Random is in the range of 0 to 5 and with +1 it would be ==> from 1 To 6.;
+      },
+    ); // End Of setState
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +64,7 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: TextButton(
               onPressed: () {
-                // ignore: avoid_print
-                print(
-                  'The left dice got pressed',
-                );
-
-                setState(
-                  () {
-                    leftDiceNumber = 5;
-                  },
-                ); // setState
+                diceChanger(); // setState
               },
               child: Image.asset(
                 'lib/images/dice$leftDiceNumber.png',
@@ -64,13 +74,10 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: TextButton(
               onPressed: () {
-                // ignore: avoid_print
-                print(
-                  'The right dice got pressed',
-                );
+                diceChanger();
               },
               child: Image.asset(
-                'lib/images/dice1.png',
+                'lib/images/dice$rightDiceNumber.png',
               ),
             ),
           ),
