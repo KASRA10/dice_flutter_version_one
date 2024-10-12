@@ -3,14 +3,21 @@ import 'package:flutter/material.dart';
 void main() {
   return runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.lightBlue[50],
         appBar: AppBar(
+          centerTitle: true,
+          shadowColor: Colors.black,
+          elevation: 15,
+          backgroundColor: Colors.blue,
           title: Text(
             'Dice',
             style: TextStyle(
+              color: Colors.white,
               fontFamily: 'PTSans',
-              backgroundColor: Colors.red,
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
             ),
           ),
         ),
@@ -25,6 +32,37 @@ class DicePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Row(
+        children: [
+          Expanded(
+            child: TextButton(
+              onPressed: () {
+                // ignore: avoid_print
+                print(
+                  'The left dice got pressed',
+                );
+              },
+              child: Image.asset(
+                'lib/images/one.png',
+              ),
+            ),
+          ),
+          Expanded(
+            child: TextButton(
+              onPressed: () {
+                // ignore: avoid_print
+                print(
+                  'The right dice got pressed',
+                );
+              },
+              child: Image.asset(
+                'lib/images/one.png',
+              ),
+            ),
+          ),
+        ], // rowChildren
+      ),
+    );
   }
 }
